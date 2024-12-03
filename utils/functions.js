@@ -98,7 +98,7 @@ const sendEmail = (
 			}
 		);
 };
-//👇🏻 converts JSON string to JavaScript objects
+
 export const parseJSON = (jsonString) => {
 	try {
 		return JSON.parse(jsonString);
@@ -114,7 +114,7 @@ export const createSlug = (sentence) => {
 	slug = slug.replace(/^-+|-+$/g, "");
 	return slug;
 };
-//👇🏻 Appwrite signUp function
+
 export const signUp = async (name, email, password, router) => {
 	try {
 		await account.create(ID.unique(), email, password, name);
@@ -125,7 +125,7 @@ export const signUp = async (name, email, password, router) => {
 		router.push("/login");
 	}
 };
-//👇🏻 Appwrite login function
+
 export const logIn = async (email, setEmail, password, setPassword, router) => {
 	try {
 		await account.createEmailSession(email, password);
@@ -188,6 +188,7 @@ export const createEvent = async (
 	description,
 	note,
 	flier,
+	duration,
 	router
 ) => {
 	const createDocument = async (flier_url = "https://google.com") => {
@@ -204,6 +205,7 @@ export const createEvent = async (
 					venue,
 					description,
 					note,
+					duration,
 					slug: createSlug(title),
 					attendees: [],
 					disableRegistration: false,
